@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --color-multani-amber: #f59e0b;
+}
