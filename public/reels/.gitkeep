@@ -1,0 +1,2 @@
+# Drop your YouTube reels files here when adding new reels.
+# See content/reels.json — each video needs: id (YouTube ID), title, caption, channel.
