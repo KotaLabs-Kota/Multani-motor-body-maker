@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     'kota rajasthan',
   ],
   robots: 'index, follow',
+  referrer: 'strict-origin-when-cross-origin',
   openGraph: {
     title: 'Multani Motor Body Makers — Official Website',
     description:

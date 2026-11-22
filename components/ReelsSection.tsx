@@ -44,7 +44,7 @@ export default function ReelsSection() {
           <ReelPlaceholder />
         ) : (
           <>
-            <div className="grid gap-6 lg:grid-cols-2">
+            <div className="video-rail" role="region" aria-label="Workshop reels, scroll horizontally to see more" tabIndex={0}>
               {videos.map((v, i) => (
                 <ReelCard key={v.id} video={v} number={v.number ?? i + 1} total={total} />
               ))}
@@ -70,14 +70,15 @@ export default function ReelsSection() {
 }
 
 function ReelCard({ video, number, total }: { video: ReelVideo; number: number; total: number }) {
-  const embedUrl = `https://www.youtube.com/embed/${video.id}?autoplay=1&mute=1&loop=1&rel=0&controls=2`;
+  const embedUrl = `https://www.youtube.com/embed/${video.id}?autoplay=1&mute=1&loop=1&playlist=${encodeURIComponent(video.id)}&rel=0&controls=1`;
   return (
-    <div className="group rounded-2xl overflow-hidden shadow-md border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all">
+    <article className="video-card group">
       <div className="relative aspect-video bg-slate-900">
         <iframe
           src={embedUrl}
           title={video.title}
           loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
           className="w-full h-full"
           allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
           allowFullScreen
@@ -90,8 +91,9 @@ function ReelCard({ video, number, total }: { video: ReelVideo; number: number; 
         <p className="font-black text-slate-800">{video.title}</p>
         {video.caption && <p className="mt-2 text-sm text-slate-600 max-w-prose">{video.caption}</p>}
         {video.channel && <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-slate-500">{video.channel}</p>}
+        <a className="video-watch-link" href={`https://www.youtube.com/watch?v=${encodeURIComponent(video.id)}`} target="_blank" rel="noreferrer">Watch on YouTube ↗</a>
       </div>
-    </div>
+    </article>
   );
 }
 
