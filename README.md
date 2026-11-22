@@ -9,3 +9,7 @@ Run `npm ci` followed by `npm run dev`. Run `npm run build` to verify a producti
 ## Workshop reels
 
 Reels are local MP4 files in `public/reels/`. To add or reorder one, put the video in that folder and update `content/reels.json` with its public `src` (for example `/reels/example.mp4`), `title`, and `number`. Videos are displayed in number order with playback controls and do not autoplay. Keep video files reasonably sized for mobile visitors and use browser-compatible MP4 encoding.
+
+## Workshop photography
+
+The modified-vehicle images used on the homepage are still frames from the MP4s in `public/reels/`. `instagram-night-build.jpg` is from `workshop-reel.mp4`, the repository's export of the workshop's Instagram reel [CxAIv_jLv0-](https://www.instagram.com/p/CxAIv_jLv0-/). The remaining workshop frames are from the other videos already supplied in the repository.
