@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
 import '@fontsource-variable/manrope';
-import '@fontsource-variable/cormorant-garamond';
-import '@fontsource-variable/cormorant-garamond/wght-italic.css';
+import '@fontsource-variable/noto-sans-devanagari';
 import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Multani Motor Body Makers — Official Website',
   description:
-    "Custom pickup bodies, truck bodies & commercial vehicle bodies from Multani Motor Body Makers, India's No.1 commercial vehicle body maker. Since 1996. Kota, Rajasthan.",
+    "Pickup and commercial vehicle body work from Multani Motor Body Makers in Kota, Rajasthan.",
   keywords: [
     'multani motor body makers',
     'pickup body maker kota',
@@ -22,8 +21,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Multani Motor Body Makers — Official Website',
     description:
-      "Custom pickup bodies, truck bodies & commercial vehicle bodies from Multani Motor Body Makers, India's No.1 commercial vehicle body maker.",
-    locale: 'en_US',
+      "Pickup and commercial vehicle body work from Multani Motor Body Makers in Kota, Rajasthan.",
+    locale: 'en_IN',
     type: 'website',
     siteName: 'Multani Motor Body Makers',
   },

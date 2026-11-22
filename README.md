@@ -8,7 +8,7 @@ Run `npm ci` followed by `npm run dev`. Run `npm run build` to verify a producti
 
 ## Workshop reels
 
-Reels are local MP4 files in `public/reels/`. To add or reorder one, put the video in that folder and update `content/reels.json` with its public `src` (for example `/reels/example.mp4`), `title`, and `number`. Videos are displayed in number order with playback controls and do not autoplay. Keep video files reasonably sized for mobile visitors and use browser-compatible MP4 encoding.
+Reels are local MP4 files in `public/reels/`. To add or reorder one, put the video in that folder and update `content/reels.json` with its public `src` (for example `/reels/example.mp4`), `title`, and `number`. Videos are displayed in number order. When the reels section first comes into view, the first video attempts to play with sound; if the browser blocks this, it attempts muted playback. Visitors can use the player or the “Play with sound” button. Keep video files reasonably sized for mobile visitors and use browser-compatible MP4 encoding.
 
 ## Workshop photography
 
