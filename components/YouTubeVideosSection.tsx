@@ -33,31 +33,33 @@ export default function YouTubeVideosSection() {
             Their Best Work on YouTube
           </h2>
           <p className="mt-5 text-lg text-slate-600">
-            Popular pickup builds &amp; modifier showcases — live from the backend class shop.
+            Popular pickup builds and workshop showcases. Swipe or scroll to explore more videos.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 max-w-3xl">
+        <div className="video-rail" role="region" aria-label="Workshop videos, scroll horizontally to see more" tabIndex={0}>
           {videos.map((v) => (
-            <div key={v.id} className="group">
+            <article key={v.id} className="video-card group">
               <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 group-hover:border-amber-500/50 transition-all">
                 <iframe
                   src={`https://www.youtube.com/embed/${v.id}`}
                   title={v.title}
                   loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
                   className="w-full aspect-video bg-slate-900"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 />
               </div>
+              <h3 className="video-title">{v.title}</h3>
               <a
                 href={`https://www.youtube.com/watch?v=${v.id}`}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-slate-700 hover:text-amber-600 transition-colors"
+                className="video-watch-link"
               >
-                {v.title} →
+                Watch on YouTube ↗
               </a>
-            </div>
+            </article>
           ))}
         </div>
       </div>

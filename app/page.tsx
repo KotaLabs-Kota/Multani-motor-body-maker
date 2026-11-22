@@ -1,13 +1,13 @@
 import YouTubeVideosSection from '@/components/YouTubeVideosSection';
 import ReelsSection from '@/components/ReelsSection';
 import { Eyebrows } from '@/components/Eyebrows';
+import MobileNav from '@/components/MobileNav';
 
 /* ------------------------------------------------------------------ */
 /* Data (facts from their social pages)                                */
 /* ------------------------------------------------------------------ */
 
 const brandName = 'Multani Motor Body Makers';
-const tagline = "India's No.1 Commercial Vehicle Body Maker";
 const YEARS = '1996 — Present';
 const FOLLOWERS = '250K+';
 const SUBSCRIBERS = '200K+';
@@ -70,7 +70,7 @@ const contact = {
 
 function Section({ id, children }: { id: string; children: React.ReactNode }) {
   return (
-    <section id={id} className="py-16 md:py-24 border-b border-slate-100 last:border-0">
+    <section id={id} className={`site-section section-${id}`}>
       {children}
     </section>
   );
@@ -95,21 +95,22 @@ function SocialLink({ href, label }: { href: string; label: string }) {
 
 function Header() {
   return (
-    <header className="border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+    <header className="site-header sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
         <a href="#home" className="text-xl font-black tracking-tighter text-slate-900">
           Multani <span className="text-amber-600">Motor Body Makers</span>
         </a>
-        <nav className="hidden md:flex gap-8">
+        <nav className="desktop-nav" aria-label="Main navigation">
           {headerLinks.map((l) => (
             <a key={l.href} href={l.href} className="text-sm font-semibold text-slate-600 hover:text-amber-600 transition-colors">
               {l.label}
             </a>
           ))}
         </nav>
-        <a href="#contact" className="hidden md:inline-flex bg-amber-500 text-slate-900 px-5 py-2.5 rounded-full text-sm font-black tracking-wide hover:shadow-lg hover:-translate-y-px transition-all">
-          Call Us
+        <a href="#contact" className="header-cta">
+          Call Us ↗
         </a>
+        <MobileNav />
       </div>
     </header>
   );
@@ -117,28 +118,28 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="home" className="min-h-[90vh] bg-white flex items-center">
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center py-20 md:py-28">
+    <section id="home" className="hero">
+      <div className="hero-inner max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
         <div>
-          <Eyebrows>Established — 1996</Eyebrows>
-          <h1 className="mt-6 text-5xl md:text-7xl font-black tracking-tight text-slate-900 leading-[1.15]">
-            We Turn Ordinary <span className="bg-gradient-to-r from-amber-500 to-orange-400 bg-clip-text text-transparent">Vehicles Into Custom Pickup Bodies.</span>
+          <p className="hero-eyebrow">BUILT IN KOTA, RAJASTHAN <span> / </span> EST. 1996</p>
+          <h1 className="hero-title">
+            Built for work.<br /><span>Made to stand out.</span>
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-slate-600 font-medium max-w-xl">{tagline}.</p>
-          <p className="mt-4 text-sm text-slate-500 max-w-xl">
+          <p className="hero-tagline">Custom vehicle bodies, built with pride.</p>
+          <p className="hero-description">
             We design and build pickup bodies, commercial vehicle bodies and all kinds of body-making, end to end — from Kota, since 1996.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <a href="#work" className="bg-amber-500 text-slate-900 px-7 py-3.5 rounded-full text-base font-black tracking-wide hover:shadow-xl hover:-translate-y-px transition-all">
-              Explore Their Work
+            <a href="#work" className="hero-button hero-button-primary">
+              Explore Our Work ↗
             </a>
-            <a href="#youtube" className="text-slate-700 font-bold border-2 border-slate-200 rounded-full px-7 py-3.5 text-base hover:border-amber-500 hover:text-amber-600 transition-all">
-              Watch Videos
+            <a href="#youtube" className="hero-button hero-button-secondary">
+              Watch Videos ↗
             </a>
           </div>
-          <div className="mt-8 flex gap-6 text-sm text-slate-500">
+          <div className="hero-location">
             <span className="flex items-center gap-2">📍 {contact.address}</span>
-            <a href={`tel:${contact.phone}`} className="text-amber-600 font-semibold hover:underline">{contact.phone}</a>
+            <a href={`tel:${contact.phone}`} className="hero-phone">{contact.phone}</a>
           </div>
         </div>
 
@@ -147,10 +148,10 @@ function Hero() {
             <img
               src="/images/multani-motor-body-maker-kota-pickup-bod-2.jpg"
               alt="Fabricated pickup body by Multani Motor Body Makers"
-              className="w-full h-[420px] object-cover object-top"
+              className="hero-image" fetchPriority="high"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
-              <p className="text-white text-sm font-black uppercase tracking-widest">2026 Batch — Built in the Backend Class</p>
+              <p className="text-white text-sm font-black uppercase tracking-widest">Made in Kota. Built for the road.</p>
             </div>
             <a href={contact.mapLink} target="_blank" rel="noreferrer" className="absolute top-3 right-3 bg-white/90 text-slate-900 text-xs font-black px-4 py-2 rounded-full hover:scale-105 transition-all">
               📍 Visit Map
@@ -182,10 +183,10 @@ function Stats() {
             For 3+ decades the team has been the go-to pickup body studio. The numbers behind our growing community.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-5 max-w-3xl">
+        <div className="stats-grid">
           {stats.map((s) => (
-            <div key={s.label} className="rounded-3xl border border-slate-200 p-8 text-center bg-slate-50/60 hover:border-amber-500/50 hover:shadow-2xl transition-all">
-              <p className="text-5xl md:text-6xl font-black text-slate-900 tracking-tighter">{s.value}</p>
+            <div key={s.label} className="stat-card">
+              <p className="stat-value">{s.value}</p>
               <h3 className="mt-3 text-lg font-black text-slate-800 tracking-tight">{s.label}</h3>
               {s.note && <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-slate-500">{s.note}</p>}
             </div>
@@ -209,9 +210,9 @@ function Services() {
             Products &amp; Services. From pickups to heavy commercial vehicles — whatever your body, we build it.
           </p>
         </div>
-        <div className="mt-12 grid md:grid-cols-2 gap-8">
+        <div className="mt-12 grid md:grid-cols-2 gap-5">
           {services.map((s) => (
-            <div key={s.title} className="group rounded-3xl border border-slate-200 hover:border-amber-500/50 p-8 hover:bg-amber-50/40 transition-all shadow-sm hover:shadow-2xl hover:-translate-y-1">
+            <div key={s.title} className="service-card group">
               <h3 className="text-2xl font-black tracking-tight text-slate-900 group-hover:text-amber-700">{s.title}</h3>
               <p className="mt-4 text-slate-600 leading-relaxed">{s.blurb}</p>
             </div>
@@ -254,7 +255,7 @@ function ContactSection() {
   return (
     <Section id="contact">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="max-w-4xl grid md:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           <div>
             <Eyebrows>Contact</Eyebrows>
             <h2 className="mt-6 text-4xl md:text-5xl font-black tracking-tight text-slate-900">
@@ -264,19 +265,19 @@ function ContactSection() {
               Have a body to build or a pickup modification to discuss? Reach out — the workshop answers all direct calls.
             </p>
             <div className="mt-10 space-y-5">
-              <a href={`tel:${contact.phone}`} className="flex items-center gap-4 text-2xl font-black text-slate-900 hover:text-amber-600 transition-colors">
+              <a href={`tel:${contact.phone}`} className="contact-link">
                 📞 {contact.phone}
               </a>
-              <a href={`https://wa.me/919460424711?text=Hi`} target="_blank" rel="noreferrer" className="flex items-center gap-4 text-2xl font-black text-slate-900 hover:text-amber-600 transition-colors">
+              <a href={`https://wa.me/919660769822?text=Hi`} target="_blank" rel="noreferrer" className="contact-link">
                 💬 {contact.whatsapp} — WhatsApp
               </a>
-              <a href={`mailto:${contact.email}`} className="flex items-center gap-4 text-2xl font-black text-slate-900 hover:text-amber-600 transition-colors">
+              <a href={`mailto:${contact.email}`} className="contact-link">
                 ✉️ {contact.email}
               </a>
-              <div className="flex items-center gap-4 text-2xl font-black text-slate-900">
+              <div className="contact-link">
                 📍 {contact.address}
               </div>
-              <a href={contact.mapLink} target="_blank" rel="noreferrer" className="flex items-center gap-4 text-2xl font-black text-slate-900 hover:text-amber-600 transition-colors">
+              <a href={contact.mapLink} target="_blank" rel="noreferrer" className="contact-link">
                 🗺️ Open the workshop on the map
               </a>
             </div>
@@ -298,14 +299,14 @@ function ContactSection() {
 
 function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-slate-50">
+    <footer className="site-footer">
       <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row md:justify-between items-center gap-6">
-        <p className="text-slate-500 text-sm">
+        <p className="footer-copyright">
           © {new Date().getFullYear()} {brandName} — Official website.
         </p>
-        <nav className="flex gap-6 text-sm font-medium text-slate-600">
+        <nav className="footer-nav" aria-label="Footer navigation">
           {headerLinks.map((l) => (
-            <a key={l.href} href={l.href} className="hover:text-amber-600 transition-colors">
+            <a key={l.href} href={l.href} className="footer-link">
               {l.label}
             </a>
           ))}
@@ -317,7 +318,7 @@ function Footer() {
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen site-shell">
       <Header />
       <Hero />
       <Stats />
