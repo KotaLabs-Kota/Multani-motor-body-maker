@@ -1,68 +1,11 @@
-import { Eyebrows } from '@/components/Eyebrows';
-
 const videos = [
-  {
-    id: 'vKyyUFQ_U0c',
-    title: 'मुलतानी मोटर बॉडी के चाहने वालों का डांस — Bolero Pickup Lover 🔥 — 1.1M+ views',
-  },
-  {
-    id: 'lW-VyJ1Y--8',
-    title: 'Bolero Pickup — You won’t have seen a pickup like this on all of YouTube 🔥',
-  },
-  {
-    id: '0uj0yefFBWs',
-    title: "India's Most Spectacular Pickup Body — Built Here",
-  },
-  {
-    id: '7Zp_37xlIgA',
-    title: "India's Most Famous Pickup Body & Cabin Decoration — Multani Motor Body Makers",
-  },
-  {
-    id: '0JH5Figr-J8',
-    title: 'N.1 Pickup Body — Rajasthan — Famous — Multani Body Maker',
-  },
+  { id: 'vKyyUFQ_U0c', title: 'मुलतानी मोटर बॉडी के चाहने वालों का डांस — Bolero Pickup Lover' },
+  { id: 'lW-VyJ1Y--8', title: 'Bolero Pickup — a pickup like no other' },
+  { id: '0uj0yefFBWs', title: 'A spectacular pickup body — built here' },
+  { id: '7Zp_37xlIgA', title: 'Pickup body and cabin decoration' },
+  { id: '0JH5Figr-J8', title: 'Pickup body work from Rajasthan' },
 ];
 
 export default function YouTubeVideosSection() {
-  return (
-    <section id="youtube" className="py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="max-w-3xl">
-          <Eyebrows>YouTube — From the Workshop</Eyebrows>
-          <h2 className="mt-6 text-4xl md:text-5xl font-black tracking-tight text-slate-900">
-            Their Best Work on YouTube
-          </h2>
-          <p className="mt-5 text-lg text-slate-600">
-            Popular pickup builds and workshop showcases. Swipe or scroll to explore more videos.
-          </p>
-        </div>
-        <div className="video-rail" role="region" aria-label="Workshop videos, scroll horizontally to see more" tabIndex={0}>
-          {videos.map((v) => (
-            <article key={v.id} className="video-card group">
-              <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200 group-hover:border-amber-500/50 transition-all">
-                <iframe
-                  src={`https://www.youtube.com/embed/${v.id}`}
-                  title={v.title}
-                  loading="lazy"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  className="w-full aspect-video bg-slate-900"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-              </div>
-              <h3 className="video-title">{v.title}</h3>
-              <a
-                href={`https://www.youtube.com/watch?v=${v.id}`}
-                target="_blank"
-                rel="noreferrer"
-                className="video-watch-link"
-              >
-                Watch on YouTube ↗
-              </a>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <section id="youtube" className="section youtube-section"><div className="container"><div className="section-heading"><div><p className="eyebrow">Stories from the workshop</p><h2>See the work <em>come to life.</em></h2><p>Follow the builds, the details and the people behind them.</p></div><a className="text-link" href="https://www.youtube.com/@Multanimotorbodymakers" target="_blank" rel="noreferrer">Visit our YouTube ↗</a></div><div className="youtube-rail" role="region" aria-label="Workshop videos, scroll horizontally for more" tabIndex={0}>{videos.map((video, index) => <article className="youtube-card" key={video.id}><div className="youtube-frame"><iframe src={`https://www.youtube.com/embed/${video.id}`} title={video.title} loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /></div><div className="youtube-copy"><span className="micro">WORKSHOP FILM / 0{index + 1}</span><h3>{video.title}</h3><a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noreferrer">Watch on YouTube ↗</a></div></article>)}</div><p className="fine-print">Swipe or scroll to explore. If a video cannot play here, open it on YouTube.</p></div></section>;
 }

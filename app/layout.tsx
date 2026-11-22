@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/cormorant-garamond';
+import '@fontsource-variable/cormorant-garamond/wght-italic.css';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -34,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-white text-slate-900 antialiased font-sans">
+      <body>
         {children}
       </body>
     </html>

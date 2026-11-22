@@ -1,3 +1,8 @@
 {
-  "videos": []
+  "videos": [
+    { "src": "/reels/video-1.mp4", "title": "From the workshop", "number": 1 },
+    { "src": "/reels/video-2.mp4", "title": "Made in Kota", "number": 2 },
+    { "src": "/reels/workshop-reel.mp4", "title": "A closer look", "number": 3 },
+    { "src": "/reels/video-last.mp4", "title": "Ready for the road", "number": 4 }
+  ]
 }

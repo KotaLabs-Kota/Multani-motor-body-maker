@@ -1,333 +1,51 @@
-import YouTubeVideosSection from '@/components/YouTubeVideosSection';
-import ReelsSection from '@/components/ReelsSection';
-import { Eyebrows } from '@/components/Eyebrows';
 import MobileNav from '@/components/MobileNav';
+import ReelsSection from '@/components/ReelsSection';
+import YouTubeVideosSection from '@/components/YouTubeVideosSection';
 
-/* ------------------------------------------------------------------ */
-/* Data (facts from their social pages)                                */
-/* ------------------------------------------------------------------ */
-
-const brandName = 'Multani Motor Body Makers';
-const YEARS = '1996 — Present';
-const FOLLOWERS = '250K+';
-const SUBSCRIBERS = '200K+';
-const TOP_VIDEO_VIEWS = '1.1M+';
-
-const headerLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#services', label: 'Services' },
-  { href: '#work', label: 'Their Work' },
-  { href: '#youtube', label: 'YouTube' },
-  { href: '#reels', label: 'Reels' },
-  { href: '#contact', label: 'Contact' },
+const links = [
+  { href: '#home', label: 'Home' }, { href: '#services', label: 'Services' },
+  { href: '#work', label: 'Our work' }, { href: '#reels', label: 'Reels' },
+  { href: '#youtube', label: 'Videos' }, { href: '#contact', label: 'Contact' },
 ];
-
+const image = (n: number) => `/images/multani-motor-body-maker-kota-pickup-bod-${n}.jpg`;
+const map = 'https://maps.app.goo.gl/pdUCYmWHgy4ooX67A';
 const services = [
-  {
-    title: 'Mahindra Bolero Pickup',
-    blurb: 'Fully fitted Bolero Pickup bodies — mounting, engine, chassis — ready to hand over.',
-  },
-  {
-    title: 'Mahindra Pickup Body',
-    blurb: 'Custom Mahindra Pickup steel bodies, from stock shell to luxury variant.',
-  },
-  {
-    title: 'Bolero Pickup Body Work',
-    blurb: 'Lighting, GCC & ECU mods, styling and cabin modifications — fully documented in their YouTube build videos.',
-  },
-  {
-    title: 'Pickup Bodies — All Types',
-    blurb: 'Mini, mid and luxe pickup bodies — new builds and conversions, Bolero family focus.',
-  },
-  {
-    title: 'Commercial Vehicle Bodies',
-    blurb: 'Bus, truck, tipper, dumper & minivan bodies — every kind of commercial vehicle built in one place.',
-  },
+  { title: 'Pickup bodies', description: 'Built for the way you work.', src: image(2), alt: 'Custom high-sided pickup body made in Kota' },
+  { title: 'Commercial bodies', description: 'Made for the road ahead.', src: image(5), alt: 'Enclosed commercial pickup body inside the workshop' },
+  { title: 'Body work & styling', description: 'The details that make it yours.', src: image(3), alt: 'Custom pickup body with painted detailing' },
+];
+const work = [
+  { src: image(1), title: 'Made to stand out', type: 'PICKUP BODY', description: 'Custom fabrication', alt: 'Colourfully finished custom pickup body outside the workshop' },
+  { src: image(2), title: 'Ready for the road', type: 'PICKUP BODY', description: 'High-sided cargo body', alt: 'White pickup with a high-sided custom cargo body' },
+  { src: image(4), title: 'Built for the job', type: 'BODY WORK', description: 'Commercial pickup', alt: 'White commercial pickup body seen from the side' },
+  { src: image(5), title: 'Made with purpose', type: 'COMMERCIAL BODY', description: 'Enclosed cargo body', alt: 'White enclosed pickup body inside a workshop' },
 ];
 
-const gallery = [
-  { src: '/images/multani-motor-body-maker-kota-pickup-bod-1.jpg', alt: 'Fabricated Mahindra Bolero Pickup body — Multani Motor Body Makers' },
-  { src: '/images/multani-motor-body-maker-kota-pickup-bod-2.jpg', alt: 'Custom pickup body — Backend class fabrication shop' },
-  { src: '/images/multani-motor-body-maker-kota-pickup-bod-3.jpg', alt: 'Finished Bolero Pickup body — pickup body work in Kota' },
-  { src: '/images/multani-motor-body-maker-kota-pickup-bod-4.jpg', alt: 'Mahindra Pickup Body — body fabrication, Kota' },
-  { src: '/images/multani-motor-body-maker-kota-pickup-bod-5.jpg', alt: 'Painted pickup body — ready for delivery' },
-];
-
-const contact = {
-  phone: '+91 94604 24711',
-  whatsapp: '+91 96607 69822',
-  email: 'officialmultanibodykota@gmail.com',
-  address: 'Backend class industrial area, Kota, Rajasthan, India (P.O. Industrial Area, PIN 324009)',
-  mapLink: 'https://www.maps.app.goo.gl/pdUCYmWHgy4ooX67A',
-  youtube: 'https://www.youtube.com/@Multanimotorbodymakers',
-  instagram: 'https://www.instagram.com/multani_motor_body/',
-  facebook: 'https://www.facebook.com/100093682046235',
-};
-
-/* ------------------------------------------------------------------ */
-/* Reusable UI                                                         */
-/* ------------------------------------------------------------------ */
-
-function Section({ id, children }: { id: string; children: React.ReactNode }) {
-  return (
-    <section id={id} className={`site-section section-${id}`}>
-      {children}
-    </section>
-  );
+function Brand() {
+  return <a href="#home" className="brand" aria-label="Multani Motor Body Makers home"><span className="brand-icon" aria-hidden="true">M</span><span><strong>Multani<span>.</span></strong><small>Motor body makers · Kota</small></span></a>;
 }
-
-function SocialLink({ href, label }: { href: string; label: string }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      className="flex items-center gap-3 rounded-xl border border-slate-200 p-4 text-lg font-semibold text-slate-700 hover:border-amber-500 hover:text-amber-600 transition-all"
-    >
-      {label} →
-    </a>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Sections                                                            */
-/* ------------------------------------------------------------------ */
-
 function Header() {
-  return (
-    <header className="site-header sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
-        <a href="#home" className="text-xl font-black tracking-tighter text-slate-900">
-          Multani <span className="text-amber-600">Motor Body Makers</span>
-        </a>
-        <nav className="desktop-nav" aria-label="Main navigation">
-          {headerLinks.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm font-semibold text-slate-600 hover:text-amber-600 transition-colors">
-              {l.label}
-            </a>
-          ))}
-        </nav>
-        <a href="#contact" className="header-cta">
-          Call Us ↗
-        </a>
-        <MobileNav />
-      </div>
-    </header>
-  );
+  return <><div className="location-bar"><a href={map} target="_blank" rel="noreferrer"><span>⌖</span> Industrial Area, Kota <i /> <span>Get directions ↗</span></a></div><header className="site-header"><div className="container nav-inner"><Brand /><nav className="desktop-nav" aria-label="Main navigation">{links.map(link => <a key={link.href} href={link.href}>{link.label}</a>)}</nav><a className="header-cta" href="tel:+919460424711">Call the workshop ↗</a><MobileNav /></div></header></>;
 }
-
 function Hero() {
-  return (
-    <section id="home" className="hero">
-      <div className="hero-inner max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
-        <div>
-          <p className="hero-eyebrow">BUILT IN KOTA, RAJASTHAN <span> / </span> EST. 1996</p>
-          <h1 className="hero-title">
-            Built for work.<br /><span>Made to stand out.</span>
-          </h1>
-          <p className="hero-tagline">Custom vehicle bodies, built with pride.</p>
-          <p className="hero-description">
-            We design and build pickup bodies, commercial vehicle bodies and all kinds of body-making, end to end — from Kota, since 1996.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a href="#work" className="hero-button hero-button-primary">
-              Explore Our Work ↗
-            </a>
-            <a href="#youtube" className="hero-button hero-button-secondary">
-              Watch Videos ↗
-            </a>
-          </div>
-          <div className="hero-location">
-            <span className="flex items-center gap-2">📍 {contact.address}</span>
-            <a href={`tel:${contact.phone}`} className="hero-phone">{contact.phone}</a>
-          </div>
-        </div>
-
-        <div className="relative lg:pl-8">
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-900/10">
-            <img
-              src="/images/multani-motor-body-maker-kota-pickup-bod-2.jpg"
-              alt="Fabricated pickup body by Multani Motor Body Makers"
-              className="hero-image" fetchPriority="high"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
-              <p className="text-white text-sm font-black uppercase tracking-widest">Made in Kota. Built for the road.</p>
-            </div>
-            <a href={contact.mapLink} target="_blank" rel="noreferrer" className="absolute top-3 right-3 bg-white/90 text-slate-900 text-xs font-black px-4 py-2 rounded-full hover:scale-105 transition-all">
-              📍 Visit Map
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return <section id="home" className="hero"><div className="container hero-grid"><div className="hero-copy"><p className="eyebrow">Kota’s body-building workshop</p><h1>Built to work.<br /><em>Made for your road.</em></h1><p>Pickup and commercial vehicle bodies, made with care in Kota. Let’s build something that works as hard as you do.</p><div className="button-row"><a className="button button-primary" href="#work">Explore our work <span>→</span></a><a className="button button-outline" href="#contact">Visit the workshop <span>↗</span></a></div></div><figure className="hero-visual"><img src={image(1)} alt="A colourful custom pickup outside the Multani workshop" fetchPriority="high" /><figcaption><span>01</span> Made in Kota</figcaption><i aria-hidden="true" /></figure></div></section>;
 }
-
-function Stats() {
-  const stats = [
-    { label: 'Years in Business', value: YEARS, note: 'Registered since 1996' },
-    { label: 'Follower Community', value: FOLLOWERS, note: 'Instagram' },
-    { label: 'Subscriber Community', value: SUBSCRIBERS, note: 'YouTube' },
-    { label: 'Top Video Views', value: TOP_VIDEO_VIEWS, note: 'YouTube' },
-    { label: 'Service Areas', value: 'Every kind of commercial vehicle', note: 'From our workshop' },
-  ];
-  return (
-    <Section id="stats">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="max-w-3xl">
-          <Eyebrows>Achievements &amp; Reach</Eyebrows>
-          <h2 className="mt-6 text-4xl md:text-5xl font-black tracking-tight text-slate-900">
-            Numbers Worth Knowing — Not marketing, real stats.
-          </h2>
-          <p className="mt-4 text-slate-600">
-            For 3+ decades the team has been the go-to pickup body studio. The numbers behind our growing community.
-          </p>
-        </div>
-        <div className="stats-grid">
-          {stats.map((s) => (
-            <div key={s.label} className="stat-card">
-              <p className="stat-value">{s.value}</p>
-              <h3 className="mt-3 text-lg font-black text-slate-800 tracking-tight">{s.label}</h3>
-              {s.note && <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-slate-500">{s.note}</p>}
-            </div>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
+function Facts() {
+  return <div className="facts"><div className="container facts-grid"><a href="#contact" className="fact"><span className="fact-icon">✳</span><span><strong>Since 1996</strong><small>Crafted with experience</small></span></a><a href="#services" className="fact"><span className="fact-icon">⌁</span><span><strong>Custom body work</strong><small>Built around your needs</small></span></a><a href={map} target="_blank" rel="noreferrer" className="fact"><span className="fact-icon">⌖</span><span><strong>Visit us in Kota</strong><small>Industrial Area, Rajasthan</small></span></a></div></div>;
 }
-
 function Services() {
-  return (
-    <Section id="services">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="max-w-3xl">
-          <Eyebrows>Products &amp; Services</Eyebrows>
-          <h2 className="mt-6 text-4xl md:text-5xl font-black tracking-tight text-slate-900">
-            Built to Love, Built to Serve
-          </h2>
-          <p className="mt-5 text-lg text-slate-600">
-            Products &amp; Services. From pickups to heavy commercial vehicles — whatever your body, we build it.
-          </p>
-        </div>
-        <div className="mt-12 grid md:grid-cols-2 gap-5">
-          {services.map((s) => (
-            <div key={s.title} className="service-card group">
-              <h3 className="text-2xl font-black tracking-tight text-slate-900 group-hover:text-amber-700">{s.title}</h3>
-              <p className="mt-4 text-slate-600 leading-relaxed">{s.blurb}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
+  return <section id="services" className="section container collection"><div className="section-heading"><div><p className="eyebrow">What we do</p><h2>Built around <em>your work.</em></h2></div><a href="#contact" className="text-link">Talk to the workshop ↗</a></div><div className="category-grid">{services.map((item, index) => <a className="category-card" href="#contact" key={item.title}><div className="category-image"><img src={item.src} alt={item.alt} loading="lazy" /><span className="category-index">0{index + 1}</span></div><div className="category-body"><div><h3>{item.title}</h3><p>{item.description}</p></div><span className="circle-arrow">↗</span></div></a>)}</div></section>;
 }
-
-function Gallery() {
-  return (
-    <Section id="work">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="max-w-3xl mb-12">
-          <Eyebrows>Their Work</Eyebrows>
-          <h2 className="mt-6 text-4xl md:text-5xl font-black tracking-tight text-slate-900">
-            Heavy Duty, Fully Fitted — These Are the Bodies
-          </h2>
-          <p className="mt-4 text-lg text-slate-600">
-            Bodies built over years, some already on the road — built by Multani Motor Body Makers.
-          </p>
-        </div>
-        <div className="grid gap-4 md:grid-cols-3">
-          {gallery.map((g) => (
-            <div key={g.src} className="group overflow-hidden rounded-2xl border border-slate-200 shadow-md hover:-translate-y-2 transition-all">
-              <img src={g.src} alt={g.alt} className="w-full h-64 object-cover object-center group-hover:scale-105 transition-transform duration-500" />
-              <div className="p-4 bg-white">
-                <p className="text-sm font-bold text-slate-700">{g.alt.replace(' — Multani Motor Body Makers', '')}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
+function Work() {
+  return <section id="work" className="work-section section"><div className="container"><div className="section-heading"><div><p className="eyebrow">From the workshop</p><h2>A closer look <em>at our work.</em></h2><p>Real builds, thoughtful details and bodies made to be put to work.</p></div><a href="https://www.instagram.com/multani_motor_body/" target="_blank" rel="noreferrer" className="text-link">More on Instagram ↗</a></div><div className="work-grid">{work.map(item => <article className="work-card" key={item.title}><div className="work-image"><img src={item.src} alt={item.alt} loading="lazy" /></div><div className="work-copy"><span className="micro">{item.type}</span><h3>{item.title}</h3><p>{item.description}</p></div></article>)}</div><p className="fine-print">A selection of work from the Multani Motor Body Makers workshop.</p></div></section>;
 }
-
-function ContactSection() {
-  return (
-    <Section id="contact">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-          <div>
-            <Eyebrows>Contact</Eyebrows>
-            <h2 className="mt-6 text-4xl md:text-5xl font-black tracking-tight text-slate-900">
-              Get in Touch With the Team
-            </h2>
-            <p className="mt-5 text-lg text-slate-600">
-              Have a body to build or a pickup modification to discuss? Reach out — the workshop answers all direct calls.
-            </p>
-            <div className="mt-10 space-y-5">
-              <a href={`tel:${contact.phone}`} className="contact-link">
-                📞 {contact.phone}
-              </a>
-              <a href={`https://wa.me/919660769822?text=Hi`} target="_blank" rel="noreferrer" className="contact-link">
-                💬 {contact.whatsapp} — WhatsApp
-              </a>
-              <a href={`mailto:${contact.email}`} className="contact-link">
-                ✉️ {contact.email}
-              </a>
-              <div className="contact-link">
-                📍 {contact.address}
-              </div>
-              <a href={contact.mapLink} target="_blank" rel="noreferrer" className="contact-link">
-                🗺️ Open the workshop on the map
-              </a>
-            </div>
-          </div>
-          <div className="space-y-5">
-            <h3 className="text-2xl font-black text-slate-900">Follow the Works</h3>
-            <div className="grid gap-3">
-              <SocialLink href={contact.youtube} label="YouTube — 200K+ Subscribers" />
-              <SocialLink href={contact.instagram} label="Instagram — 250K+ Followers" />
-              <SocialLink href={contact.facebook} label="Facebook — Official Page" />
-            </div>
-            <p className="text-xs text-slate-400">Backers &amp; aggregators: IndiaMART — every call/WhatsApp reaches their team directly.</p>
-          </div>
-        </div>
-      </div>
-    </Section>
-  );
+function About() {
+  return <section className="section about-section"><div className="container about-grid"><div className="about-image"><img src={image(5)} alt="A commercial vehicle body in the workshop" loading="lazy" /><span>Made with care, in Kota</span></div><div className="about-copy"><p className="eyebrow">The people behind the work</p><h2>Good work starts <em>with good hands.</em></h2><p>Since 1996, the team at Multani Motor Body Makers has been working on pickup and commercial vehicle bodies in Kota. From the first conversation to the finishing touches, every build starts with your needs.</p><div className="button-row"><a href="tel:+919460424711" className="button button-primary">Call the team ↗</a><a href="#contact" className="text-link">Plan your visit ↗</a></div></div></div></section>;
 }
-
+function Contact() {
+  return <section id="contact" className="section contact-section"><div className="container contact-grid"><div className="contact-copy"><p className="eyebrow">Come say hello</p><h2>Let’s build something <em>together.</em></h2><p>Have a vehicle body to build or a modification in mind? Get in touch with our workshop in Kota.</p><address>⌖ &nbsp; Backend class industrial area, Kota, Rajasthan<br />&nbsp;&nbsp;&nbsp;&nbsp; P.O. Industrial Area, PIN 324009</address><p className="contact-note">Call us to discuss your build before visiting.</p><div className="button-row"><a href={map} target="_blank" rel="noreferrer" className="button button-primary">Get directions ↗</a><a href="tel:+919460424711" className="button button-outline">+91 94604 24711</a></div></div><div className="contact-card"><div className="contact-card-label">THE WORKSHOP / KOTA</div><div className="contact-card-main"><span className="contact-pin">⌖</span><div><h3>Multani Motor<br />Body Makers<span>.</span></h3><p>Industrial Area · Kota, Rajasthan</p></div></div><div className="contact-card-links"><a href="https://wa.me/919660769822" target="_blank" rel="noreferrer">WhatsApp the team ↗</a><a href="mailto:officialmultanibodykota@gmail.com">Send an email ↗</a></div></div></div></section>;
+}
 function Footer() {
-  return (
-    <footer className="site-footer">
-      <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row md:justify-between items-center gap-6">
-        <p className="footer-copyright">
-          © {new Date().getFullYear()} {brandName} — Official website.
-        </p>
-        <nav className="footer-nav" aria-label="Footer navigation">
-          {headerLinks.map((l) => (
-            <a key={l.href} href={l.href} className="footer-link">
-              {l.label}
-            </a>
-          ))}
-        </nav>
-      </div>
-    </footer>
-  );
+  return <footer className="footer"><div className="container footer-main"><div><Brand /><p>Custom vehicle bodies, made with care in Kota.</p></div><nav aria-label="Footer navigation">{links.map(link => <a key={link.href} href={link.href}>{link.label}</a>)}</nav><div className="footer-contact"><a href="tel:+919460424711">+91 94604 24711</a><a href="https://www.instagram.com/multani_motor_body/" target="_blank" rel="noreferrer">@multani_motor_body ↗</a></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} Multani Motor Body Makers</span><span>Made in Kota, Rajasthan</span></div></footer>;
 }
-
-export default function HomePage() {
-  return (
-    <div className="min-h-screen site-shell">
-      <Header />
-      <Hero />
-      <Stats />
-      <Services />
-      <Gallery />
-      <YouTubeVideosSection />
-      <ReelsSection />
-      <ContactSection />
-      <Footer />
-    </div>
-  );
-}
+export default function HomePage() { return <><a href="#content" className="skip-link">Skip to content</a><Header /><main id="content"><Hero /><Facts /><Services /><Work /><About /><ReelsSection /><YouTubeVideosSection /><Contact /></main><Footer /></>; }
