@@ -8,7 +8,7 @@ const links = [
   { href: '#youtube', label: 'Videos' }, { href: '#contact', label: 'Contact' },
 ];
 const photos = {
-  instagramNight: '/images/instagram-night-build.jpg',
+  heroVehicle: '/images/hero-vehicle.png',
   customFront: '/images/workshop-custom-front.jpg',
   customRear: '/images/workshop-custom-rear.jpg',
   customSide: '/images/workshop-custom-side.jpg',
@@ -34,7 +34,7 @@ function Header() {
   return <><div className="location-bar"><a href={map} target="_blank" rel="noreferrer"><span>⌖</span> Industrial Area, Kota <i /> <span>Get directions ↗</span></a></div><header className="site-header"><div className="container nav-inner"><Brand /><nav className="desktop-nav" aria-label="Main navigation">{links.map(link => <a key={link.href} href={link.href}>{link.label}</a>)}</nav><a className="header-cta" href="tel:+919460424711">Call the workshop ↗</a><MobileNav /></div></header></>;
 }
 function Hero() {
-  return <section id="home" className="hero"><div className="container hero-grid"><div className="hero-copy"><p className="eyebrow">Kota’s body-building workshop</p><h1>Built to work.<br /><em>Made for your road.</em></h1><p>Pickup and commercial vehicle bodies, made with care in Kota. Let’s build something that works as hard as you do.</p><div className="button-row"><a className="button button-primary" href="#work">Explore our work <span>→</span></a><a className="button button-outline" href="#contact">Visit the workshop <span>↗</span></a></div></div><figure className="hero-visual"><img src={photos.instagramNight} alt="Multani’s colourfully lit modified pickup on the road at night" fetchPriority="high" /><figcaption><span>01</span> Made in Kota</figcaption><i aria-hidden="true" /></figure></div></section>;
+  return <section id="home" className="hero"><div className="container hero-grid"><div className="hero-copy"><p className="eyebrow">Kota’s body-building workshop</p><h1>Built to work.<br /><em>Made for your road.</em></h1><p>Pickup and commercial vehicle bodies, made with care in Kota. Let’s build something that works as hard as you do.</p><div className="button-row"><a className="button button-primary" href="#work">Explore our work <span>→</span></a><a className="button button-outline" href="#contact">Visit the workshop <span>↗</span></a></div></div><figure className="hero-visual"><img src={photos.heroVehicle} alt="A decorated white pickup with colourful lights at sunset" fetchPriority="high" /><figcaption><span>01</span> Made in Kota</figcaption><i aria-hidden="true" /></figure></div></section>;
 }
 function Facts() {
   return <div className="facts"><div className="container facts-grid"><a href="#contact" className="fact"><span className="fact-icon">✳</span><span><strong>Since 1996</strong><small>Crafted with experience</small></span></a><a href="#services" className="fact"><span className="fact-icon">⌁</span><span><strong>Custom body work</strong><small>Built around your needs</small></span></a><a href={map} target="_blank" rel="noreferrer" className="fact"><span className="fact-icon">⌖</span><span><strong>Visit us in Kota</strong><small>Industrial Area, Rajasthan</small></span></a></div></div>;
