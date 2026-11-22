@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/cormorant-garamond';
+import '@fontsource-variable/cormorant-garamond/wght-italic.css';
 import './globals.css';
 
 export const metadata: Metadata = {
