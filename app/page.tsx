@@ -55,7 +55,26 @@ function Contact() {
   return <section id="contact" className="section contact-section"><div className="container contact-grid"><div className="contact-copy"><p className="eyebrow"><span>06</span> GET IN TOUCH</p><p className="contact-hindi" lang="hi">आइए, बात करते हैं।</p><h2>Let’s get your<br /><span>gaadi ready.</span></h2><p>Have a body build or modification in mind? Call or message our team before you visit.</p><div className="button-row"><a href={phone} className="button button-primary"><Icon name="phone" /> Call +91 94604 24711</a><a href={whatsapp} target="_blank" rel="noopener noreferrer" className="button button-light"><Icon name="whatsapp" /> WhatsApp us</a></div></div><div className="contact-card"><div className="contact-card-top"><span className="micro">THE WORKSHOP</span><Icon name="pin" /></div><h3>Multani Motor<br />Body Makers<span>.</span></h3><p>Industrial Area<br />Kota, Rajasthan 324009</p><a href={map} target="_blank" rel="noopener noreferrer" className="contact-map">Get directions <Icon name="arrow" /></a><div className="contact-card-links"><a href={phone}>+91 94604 24711</a><a href="mailto:officialmultanibodykota@gmail.com">Send us an email</a></div></div></div></section>;
 }
 function Footer() {
-  return <footer className="footer"><div className="container footer-main"><div><Brand /><p>Pickup & commercial vehicle body work.<br />Proudly from Kota, Rajasthan.</p></div><nav aria-label="Footer navigation">{links.map(link => <a key={link.href} href={link.href}>{link.label}</a>)}</nav><div className="footer-contact"><span className="micro">LET’S TALK</span><a href={phone}>+91 94604 24711</a><a href="https://www.instagram.com/multani_motor_body/" target="_blank" rel="noopener noreferrer">@multani_motor_body</a></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} Multani Motor Body Makers</span><span>Made with care in Kota, Rajasthan</span></div></footer>;
+  return (
+    <footer className="footer">
+      <div className="container footer-main">
+        <div><Brand /><p>Pickup & commercial vehicle body work.<br />Proudly from Kota, Rajasthan.</p></div>
+        <nav aria-label="Footer navigation">{links.map(link => <a key={link.href} href={link.href}>{link.label}</a>)}</nav>
+        <div className="footer-contact"><span className="micro">LET’S TALK</span><a href={phone}>+91 94604 24711</a><a href="https://www.instagram.com/multani_motor_body/" target="_blank" rel="noopener noreferrer">@multani_motor_body</a></div>
+      </div>
+      <div className="container">
+        <div className="kotalabs-credit">
+          <div className="kotalabs-mark" aria-hidden="true"><span>K</span><span>L</span></div>
+          <div className="kotalabs-copy">
+            <p className="kotalabs-eyebrow">Designed &amp; engineered by</p>
+            <p className="kotalabs-line"><span className="kotalabs-name">Kota<span>Labs</span></span><span className="kotalabs-tagline">Next-gen 3D web, AR experiences &amp; digital flagships</span></p>
+          </div>
+          <a className="kotalabs-link" href="https://www.kotalabs.in/" target="_blank" rel="noopener noreferrer">Explore KotaLabs <Icon name="arrow" /></a>
+        </div>
+      </div>
+      <div className="container footer-bottom"><span>© {new Date().getFullYear()} Multani Motor Body Makers</span><span>Made with care in Kota, Rajasthan</span></div>
+    </footer>
+  );
 }
 function MobileActions() {
   return <div className="mobile-actions"><a href={phone}><Icon name="phone" /> Call now</a><a href={whatsapp} target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" /> WhatsApp</a></div>;
